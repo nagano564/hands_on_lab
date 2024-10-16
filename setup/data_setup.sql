@@ -1,8 +1,6 @@
 use role accountadmin;
 create or replace database hol;
 
---use schema rxsense.public;
-
 CREATE OR REPLACE TABLE cvs_sales (
     sales_date TIMESTAMP_NTZ,
     revenue DECIMAL(10, 2),
