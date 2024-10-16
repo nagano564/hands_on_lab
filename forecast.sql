@@ -93,7 +93,7 @@ SHOW snowflake.ml.forecast;
 
 -- Forecasting model is now available as all_locations_forecast
 -- Use CALL to forecast the next thrity timestamps (30 Days):
-CALL all_locations_forecast!FORECAST(FORECASTING_PERIODS => 15);
+CALL all_locations_forecast!FORECAST(FORECASTING_PERIODS => 30);
 
 -- Let's save the forecasted value predictions as a new TABLE
 CREATE OR REPLACE TABLE all_locations_predictions AS (
@@ -105,7 +105,7 @@ SELECT * FROM all_locations_predictions;
 
 -- Remove unnecessary quotes from the new SERIES column 
 SELECT *, REGEXP_REPLACE(SERIES,'["]') as city FROM all_locations_predictions;
--- Save output as the new mac_cheese_predictions table
+-- Save output as the new all_location_prediction_table table
 CREATE OR REPLACE TABLE all_location_prediction_table AS (
     SELECT *
     FROM TABLE(RESULT_SCAN(-1))
